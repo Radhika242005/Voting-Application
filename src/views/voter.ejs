@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voter Page</title>
+    <style>
+        /* General Body Styling */
+        body {
+            background-color: #032f0a;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Page Header */
+        h2 {
+            color: #f4f4f4;
+            text-align: center;
+            font-size: 2.5rem;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styles */
+        form {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        th {
+            background-color: #004d1a;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        td {
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #cce7d0;
+            cursor: pointer;
+        }
+
+        /* Radio Button Styling */
+        input[type="radio"] {
+            accent-color: #007b1e;
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+
+        /* Vote Button Styling */
+        input[type="submit"] {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 25px;
+            background-color: #960808;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #c31c1c;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            input[type="submit"] {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Vote for Your Candidate</h2>
+    <form action="/voter/vote" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Candidate Name</th>
+                    <th>Party</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% candidates.forEach(candidate => { %>
+                <tr>
+                    <td><input type="radio" id="candidate<%= candidate.candidate_id %>" name="candidate" value="<%= candidate.candidate_id %>"></td>
+                    <td><label for="candidate<%= candidate.candidate_id %>"><%= candidate.name %></label></td>
+                    <td><label for="candidate<%= candidate.candidate_id %>"><%= candidate.party %></label></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <input id="vote" type="submit" value="Vote">
+    </form>
+</body>
+</html>

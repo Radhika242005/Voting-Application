@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: #f4f4f9;
+            }
+
+            .background-container::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url(./images/ec3.avif);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                opacity: 0.6;
+                z-index: -1;
+            }
+
+            h2 {
+                font-size: 32px;
+                color: #570202;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 22px;
+                color: #333;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            form {
+                background-color: #ffffff;
+                padding: 20px 30px;
+                margin: 15px auto;
+                width: 100%;
+                max-width: 400px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                text-align: center;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 8px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            input[type="password"],
+            select {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+                background-color: #f9f9f9;
+                text-align: left;
+            }
+
+            input[type="submit"] {
+                padding: 12px 20px;
+                background-color: #570202;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #6a0e0e;
+            }
+
+            a {
+                display: inline-block;
+                margin-top: 20px;
+                text-decoration: none;
+                color: #570202;
+                font-size: 16px;
+                font-weight: bold;
+                transition: color 0.3s;
+            }
+
+            a:hover {
+                color: #6a0e0e;
+            }
+
+            .loginpage {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            @media (max-width: 768px) {
+                form {
+                    width: 90%;
+                }
+            }
+        </style>
+    </head>
+    <body class="background-container">
+        <h2>Admin Page</h2>
+
+        <!-- Form to register a voter -->
+        <form class="loginpage" action="/admin/register/voter" method="post">
+            <h3>Register Voter</h3>
+            <label for="voter_name">Name:</label>
+            <input type="text" id="voter_name" name="name" required>
+            <label for="voter_password">Voter Id:</label>
+            <input type="password" id="voter_password" name="password" required>
+            <input type="submit" value="Register Voter">
+        </form>
+
+        <!-- Form to register a candidate -->
+        <form class="loginpage" action="/admin/register/candidate" method="post">
+            <h3>Register Candidate</h3>
+            <label for="candidate_name">Name:</label>
+            <input type="text" id="candidate_name" name="name" required>
+            <label for="candidate_party">Party:</label>
+            <input type="text" id="candidate_party" name="party" required>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+            <input type="submit" value="Register Candidate">
+        </form>
+
+        <a href="/stats">View Voting Stats</a>
+    </body>
+</html>
+#file end
