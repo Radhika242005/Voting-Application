@@ -62,11 +62,14 @@ GETTING STARTED
 
 2. Install Dependencies:
    npm install
+   
    npm install helmet
    
 
 
 4. Set Up MySQL Database:
+   mysql -u root -p
+   USE voting_system;
    CREATE DATABASE voting_system;
 
 
@@ -75,9 +78,10 @@ GETTING STARTED
      username VARCHAR(255) UNIQUE,
      password VARCHAR(255)
    );
+   
 
 
-5. Run the App:
+6. Run the App:
    nodemon app.js
    or
    node app.js
@@ -85,17 +89,3 @@ GETTING STARTED
 
    Then open: http://localhost:3000
 
-
-TESTING PASSWORD HASHING
--------------------------
-To test password hashing using bcrypt:
-   node bcrypt.js
-
-
-FUTURE IMPROVEMENTS
--------------------
-- Add input validation with express-validator
-- Implement rate limiting using express-rate-limit
-- Enable CSRF protection using csurf
-- Add admin dashboard UI for viewing voter statistics
-- Audit login attempts and session expiry
