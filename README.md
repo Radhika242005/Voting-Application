@@ -63,7 +63,7 @@ GETTING STARTED
 2. Install Dependencies:
    npm install
    
-   npm install helmet
+   npm install helmet.
    
 
 
